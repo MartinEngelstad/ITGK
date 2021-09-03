@@ -2,6 +2,7 @@ import copy
 
 baseCookieNr = 48
 sweet = False
+printWidth = 20
 # list of ingredients
 ingredients = []
 
@@ -21,34 +22,26 @@ ingredients.append(ingredient('egg', 2.0))
 ingredients.append(ingredient('hvetemel(g)', 460.0))
 
 
-# function for printing a list of ingredients
+# function for printing a list of ingredients, either vertically or in table for task b
 def printIngredients(list):
     for i in list:
         print(i.name, i.amount, sep=': ')
 
 
-# function that prints a table of the required sukker(g) and sjokolade(g) to make the amount of cookies aquired from input
-sugarIndex = 1
-
-
 def printSweet(adjustedRecipe, num):
-    print(
-        f'{str(num).rjust(5)}\t{adjustedRecipe[0].amount:25.2f}\t{adjustedRecipe[2].amount:.2f}')
+    sugarAmount = adjustedRecipe[0].amount
+    chocoAmount = adjustedRecipe[2].amount
+    print(f'{num}{str(sugarAmount).rjust(printWidth+11)}{str(chocoAmount).rjust(printWidth)}')
 
 
-# prints the basic recipe for 48 cookies
-# printIngredients(ingredients)
-
-# function that takes a desired cookie amount and adjust the amount of ingredients
-# for oppgave a sweet = False, and the recipe is printed in the standard conifuguration
-
-
+# function that takes a desired cookie amount and adjusts the amount of ingredients
+# vairable sweet determines print function used
 def adjustRecipe(desiredCookieAmount):
     ratio = desiredCookieAmount/baseCookieNr
     adjustedRecipe = []
     for i in ingredients:
         newIngredient = copy.copy(i)
-        newIngredient.amount = i.amount * ratio
+        newIngredient.amount = round(i.amount * ratio, 2)
         adjustedRecipe.append(newIngredient)
     if sweet != True:
         printIngredients(adjustedRecipe)
@@ -71,9 +64,9 @@ num3 = int(input(cookieBakeMsg))
 
 # header for the table of required sukker(g) and sjokolade(g) amounts
 headerString1 = 'Antall cookies:'
-headerString2 = 'sukker (g)'
-headerString3 = 'sjokolade (g)'
-print(f'{headerString1}{headerString2.rjust(20)}\t{headerString3}')
+headerString2 = '     sukker (g)'
+headerString3 = '  sjokolade (g)'
+print(f'{headerString1}\t{headerString2.rjust(printWidth)}\t{headerString3.rjust(printWidth)}')
 
 # adjust recipe for the three cookie amounts
 adjustRecipe(num1)
