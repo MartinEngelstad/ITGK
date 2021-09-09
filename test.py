@@ -18,3 +18,4 @@ elif ord(pos[0].lower()) not in range(97, 104) or int(pos[1]) not in range(1, 8)
     print('Feil input.\nFørste tegn må være en bokstav A-H eller a-h\nAndre tegn må være et tall 1-8')
 else:
     color()
+    

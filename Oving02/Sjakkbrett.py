@@ -1,7 +1,7 @@
 pos = input('Posisjon: ')
 
 
-def color():  # (integer representation of a-h % 2) is same as 1-8 % 2 for black squares
+def color():  # (integer representation of a-h % 2) is same as (1-8) % 2 for black squares
     print('svart') if (ord(pos[0].lower()) % 2) == int(pos[1]) % 2 else print('hvit')
 
 
