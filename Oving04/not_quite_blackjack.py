@@ -68,9 +68,11 @@ def checkBlackJack(hand):
 playerHand = [hit(),hit()]
 dealerHand = [hit(),hit()]
 
-if checkBlackJack(dealerHand) == True and checkBlackJack(playerHand) == True:
+if checkBlackJack(dealerHand) and checkBlackJack(playerHand):
     print("Both BlackJack! Tie")
-elif checkBlackJack(playerHand) == True:
+elif checkBlackJack(dealerHand):
+    print('Dealer blackjack, you lose.')
+elif checkBlackJack(playerHand):
     print("BlackJack! You win")
 else:
     print(f'Dealer cards are {dealerHand[0]} and ?')
