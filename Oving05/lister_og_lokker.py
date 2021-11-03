@@ -16,6 +16,6 @@ def swapIndeces(list):
 print(swapIndeces(number_list))
 #oppgave d
 reversed_list = []
-for i in range(1,100):
+for i in range(1,101):
     reversed_list.append(number_list[-i])
 print(reversed_list)
